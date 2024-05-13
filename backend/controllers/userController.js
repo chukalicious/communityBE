@@ -10,4 +10,16 @@ const getUsers = asyncHandler(async (req, res) => {
   res.status(200).json(users);
 });
 
-module.exports = { getUsers };
+const getUserById = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    console.log(user);
+    if (!user) {
+      res.status(404);
+      throw new Error('User not found');
+    }
+    res.status(200).json(user);
+}
+);
+
+
+module.exports = { getUsers, getUserById }
