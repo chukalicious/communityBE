@@ -4,16 +4,16 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: [true, "Please enter your name"],
     },
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: [true, "Enter a valid email address"],
     },
     password: {
         type: String,
-        required: true
+        required: [true, "Please enter a password" ]
     }
 }, { timestamps: true })
 
