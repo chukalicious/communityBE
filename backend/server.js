@@ -6,7 +6,8 @@ const cors = require("cors")
 const { errorHandler } = require("./middleware/errorMiddleware")
 const connectDB = require("./config/db")    
 
-const router = require("./routes/userRoutes")
+const userRouter = require("./routes/userRoutes")
+const postRoutes = require("./routes/postRoutes")
 
 connectDB()
 
@@ -15,7 +16,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 app.use(errorHandler)
 
-app.use("/api/users", router)
+app.use("/api/users", userRouter)
+app.use("/api/posts", postRoutes)
 
 
 
